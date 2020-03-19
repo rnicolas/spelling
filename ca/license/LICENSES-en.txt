@@ -1,0 +1,3 @@
+LICENSES :
+Spelling dictionary: LGPL, GPL
+Hyphenation: LGPL, GPL

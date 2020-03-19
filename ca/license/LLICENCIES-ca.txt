@@ -1,0 +1,3 @@
+LLICÈNCIES:
+Corrector ortogràfic: LGPL, GPL
+Diccionari de partició de mots: LGPL, GPL
