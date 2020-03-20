@@ -32,8 +32,7 @@ downloadLanguage() {
 }
 
 selectLanguage() {
-    echo "::: Which language do you want to install?"
-    read language
+    read -r -p "::: Which language do you want to install? :: " language
     case $language in
     "ca" | "cat" | "catala" | "català" | "catalan")
         downloadLanguage "ca"
@@ -50,4 +49,4 @@ selectLanguage() {
 
 }
 
-main "$@"
+main
