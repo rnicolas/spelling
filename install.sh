@@ -13,7 +13,7 @@ main() {
 	if [[ ! $EUID -eq 0 ]]; then
 		export SUDO="sudo"
 	fi
-    selectLanguage
+    selectLanguage $@
 }
 
 downloadLanguage() {
@@ -32,8 +32,7 @@ downloadLanguage() {
 }
 
 selectLanguage() {
-    read -r -p "::: Which language do you want to install? :: " language
-    case $language in
+    case $1 in
     "ca" | "cat" | "catala" | "català" | "catalan")
         downloadLanguage "ca"
         ;;
@@ -49,4 +48,4 @@ selectLanguage() {
 
 }
 
-main
+main "$@"
