@@ -1,7 +1,7 @@
 #!/bin/sh
 # Heavily adapted from the pivpn.io
 #
-# curl -L http://www.alegret.tech/spelling/install/ | bash
+# curl -L http://spelling.alegret.tech | bash
 # Make sure you have `curl` installed
 
 ######## SCRIPT ########
@@ -50,4 +50,4 @@ selectLanguage() {
 
 }
 
-main
+main "$@"
