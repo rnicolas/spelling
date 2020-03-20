@@ -9,11 +9,10 @@
 main() {
 	######## FIRST CHECK ########
 	# Must be root to install
-	echo ":::"
 	if [[ ! $EUID -eq 0 ]]; then
 		export SUDO="sudo"
 	fi
-    selectLanguage $@
+    selectLanguage
 }
 
 downloadLanguage() {
@@ -32,20 +31,23 @@ downloadLanguage() {
 }
 
 selectLanguage() {
-    case $1 in
-    "ca" | "cat" | "catala" | "català" | "catalan")
-        downloadLanguage "ca"
-        ;;
-    "va" | "val" | "valencia" | "valencià" | "valencian")
-        downloadLanguage "ca" "ca-valencia"
-        ;;
-    "oc" | "occitan" | "occità")
-        downloadLanguage "oc"
-#    *)
-#        echo "language not found"
-#        ;;
+    echo "Which language do you want to install?" 
+    read language < /dev/tty
+    case $language in
+        "ca" | "cat" | "catala" | "català" | "catalan")
+            downloadLanguage "ca"
+            ;;
+        "va" | "val" | "valencia" | "valencià" | "valencian")
+            downloadLanguage "ca" "ca-valencia"
+            ;;
+        "oc" | "occitan" | "occità")
+            downloadLanguage "oc"
+            ;;
+        *)
+            echo "language not found"
+            ;;
     esac
 
 }
 
-main "$@"
+main $@
