@@ -3,4 +3,4 @@ A simple way to install new languages to Autocorrect Spelling on Mac
 
 Installation
 
-curl -L http://www.alegret.tech/spelling | bash
+curl -L https://spelling.alegret.tech | bash
