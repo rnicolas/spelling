@@ -1,7 +1,7 @@
 #!/bin/sh
 # Heavily adapted from the pivpn.io
 #
-# curl -L http://www.alegret.tech/spelling | bash
+# curl -L http://www.alegret.tech/spelling/install/ | bash
 # Make sure you have `curl` installed
 
 ######## SCRIPT ########
@@ -10,43 +10,42 @@ main() {
 	######## FIRST CHECK ########
 	# Must be root to install
 	echo ":::"
-	if [[ $EUID -eq 0 ]]; then
-		echo "::: You are root."
-	else
-		echo "::: You need to run this command as root"
+	if [[ ! $EUID -eq 0 ]]; then
+		export SUDO="sudo"
 	fi
     selectLanguage
 }
 
 downloadLanguage() {
-    if [[! -d "/Library/Spelling/" ]]; then
+    if [[ ! -d "/Library/Spelling/" ]]; then
     	$SUDO mkdir -p /Library/Spelling/
     fi
-    mv /Library/Spelling/
-    curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/ + $1 + / + $1 + .dic
-    curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/ + $1 + / + $1 + .aff
-    if [[$2]]; then
-        curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/ + $1 + /hyph_ + $2 + .dic
+    cd "/Library/Spelling/"
+    $SUDO curl -f https://raw.githubusercontent.com/rnicolas/spelling/master/language/"$1"/hyph_"$1".dic -O
+    if [[ -n "$2" ]]; then
+        $SUDO curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/language/"$1"/"$2".dic -O
+        $SUDO curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/language/"$1"/"$2".aff -O
     else
-        curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/ + $1 + /hyph_ + $1 + .dic
+        $SUDO curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/language/"$1"/"$1".dic -O
+        $SUDO curl -L https://raw.githubusercontent.com/rnicolas/spelling/master/language/"$1"/"$1".aff -O
     fi
 }
 
 selectLanguage() {
     echo "::: Which language do you want to install?"
     read language
-    case "$language" in
+    case $language in
     "ca" | "cat" | "catala" | "català" | "catalan")
         downloadLanguage "ca"
         ;;
     "va" | "val" | "valencia" | "valencià" | "valencian")
-        downloadLanguage "ca-valencia" "ca"
+        downloadLanguage "ca" "ca-valencia"
         ;;
     "oc" | "occitan" | "occità")
         downloadLanguage "oc"
-    *)
-        echo "language not found"
-        ;;
+#    *)
+#        echo "language not found"
+#        ;;
     esac
 
 }
