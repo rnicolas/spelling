@@ -16,6 +16,7 @@ main() {
 }
 
 downloadLanguage() {
+    echo "To proceed, the script needs to go sudo, so it will ask for your password. If you are not agree with that, just kill the script."
     if [[ ! -d "/Library/Spelling/" ]]; then
     	$SUDO mkdir -p /Library/Spelling/
     fi
@@ -31,8 +32,7 @@ downloadLanguage() {
 }
 
 selectLanguage() {
-    echo "Which language do you want to install?" 
-    read language < /dev/tty
+    read -p "Which language do you want to install? " language < /dev/tty
     case $language in
         "ca" | "cat" | "catala" | "català" | "catalan")
             downloadLanguage "ca"
