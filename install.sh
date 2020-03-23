@@ -38,11 +38,26 @@ selectLanguage() {
         "ca" | "cat" | "catala" | "català" | "catalan")
             downloadLanguage "ca"
             ;;
-        "va" | "val" | "valencia" | "valencià" | "valencian")
+        "ca-valencia" | "va" | "val" | "valencia" | "valencià" | "valencian")
             downloadLanguage "ca" "ca-valencia"
             ;;
         "oc" | "occitan" | "occità")
             downloadLanguage "oc"
+            ;;
+        "gl" | "galego" | "gallego" | "galician")
+            downloadLanguage "gl"
+            ;;
+        "ro" | "română" | "romana" | "romanian" | "rumanian" | "roumanian")
+            downloadLanguage "ro"
+            ;;
+        "is" | "icelandic" | "islenska" | "íslenska")
+            downloadLanguage "is"
+            ;;
+        "id" | "indonesian" | "bahasa Indonesia" | "bahasa indonesia")
+            downloadLanguage "id"
+            ;;
+        "bg" | "bulgarian" | "български")
+            downloadLanguage "bg"
             ;;
         *)
             echo "language not found"
