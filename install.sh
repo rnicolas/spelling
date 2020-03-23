@@ -17,6 +17,7 @@ main() {
 
 downloadLanguage() {
     echo "To proceed, the script needs to go sudo, so it will ask for your password. If you are not agree with that, just kill the script."
+    echo ""
     if [[ ! -d "/Library/Spelling/" ]]; then
     	$SUDO mkdir -p /Library/Spelling/
     fi
