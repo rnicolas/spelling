@@ -5,7 +5,7 @@ A simple way to install new languages to Autocorrect Spelling on Mac.
 
 ### Installation
 ```sh
-curl -L https://spelling.alegret.tech | bash
+curl -L http://spelling.alegret.tech | bash
 ```
 
 ### Information
