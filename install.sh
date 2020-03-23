@@ -48,7 +48,6 @@ selectLanguage() {
             echo "language not found"
             ;;
     esac
-
 }
 
 main $@
