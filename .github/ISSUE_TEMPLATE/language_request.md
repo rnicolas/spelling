@@ -13,6 +13,7 @@ The name of the language in English.
 **Which is the name of the language on that language?**
 Català is Catalan in English
 Español is Spanish in English
+Occitan is Occitan in English
 
 **How is this language normally abbreviated**
 Two common letters for that language
